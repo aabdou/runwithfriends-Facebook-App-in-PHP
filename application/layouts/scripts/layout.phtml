@@ -1,0 +1,43 @@
+<?php echo $this->doctype() ?>
+<html xmlns="http://www.w3.org/1999/xhtml" >
+  <head>
+    <meta charset="utf-8">
+    <?php echo $this->headTitle() ?> 
+    <meta name="description" content="Track and share your runs with friends.">
+    <link type="text/css" rel="stylesheet" href="<?php echo $this->baseUrl('css/awesome-buttons.css'); ?>">
+    <link type="text/css" rel="stylesheet" href="<?php echo $this->baseUrl('css/main.css'); ?>">
+    <script src="<?php echo $this->baseUrl('js/main.js'); ?>"></script>
+    <?php echo $this->headLink() ?>
+  </head>
+  <body>
+    <div id="doc">
+      <div class="hd">        
+      </div>
+
+      <div class="bd">
+        <?php echo $this->layout()->content; ?>
+      </div><!-- .bd -->
+
+      <div class="ft">
+      </div>
+
+    </div>
+
+    
+    <div id="fb-root"></div>    
+  </body>
+  
+  <script>
+    // async loading of facebook js sdk
+    window.fbAsyncInit = function() { facebookInit(<?php echo json_encode($this->layout()->facebook); ?>) };    
+    
+    (function() {
+      var e = document.createElement('script');
+      e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+      document.getElementById('fb-root').appendChild(e);
+    }());      
+  </script>
+  
+  <!-- Inline scripts -->
+  <?php echo $this->inlineScript() ?>
+</html>
