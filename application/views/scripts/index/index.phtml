@@ -1,1 +1,58 @@
-Here we will have something else
+<div id="runs">
+  <?php if(is_array($this->usrRecentRuns)){ ?>
+  <div id="recent-runs">
+    <h1>Your Recent Runs</h1>
+    <table>
+      <thead>
+        <tr>
+          <td>When</td>
+          <td>Miles</td>
+          <td>Where</td>
+        </tr>
+      </thead>
+      <tbody id="recent-bd">
+        <?php foreach($this->usrRecentRuns as $run){ ?>
+        <tr>
+          <td><?php echo $run['date']; ?></td>
+          <td><?php echo $run['pretty_distance']; ?></td>
+          <td><?php echo $run['location']; ?></td>
+        </tr>
+        <?php } ?>
+      </tbody>
+    </table>
+  </div>
+  <?php } ?>
+
+  <div class="main">
+    <h1>Where did you run recently?</h1>
+    <?php echo $this->form; ?>        
+  </div>
+
+  <div class="friends">
+    <h1>Friends</h1>
+
+    <div id="friends-runs">
+      <?php if(is_array($this->friendsRuns)) { ?>
+      <?php foreach($this->friendsRuns() as $run) { ?>
+      <div class="run">
+        <div class="details">
+          <span class="distance"><tt><?php echo $run['pretty_distance']; ?></tt> miles</span>
+          <span class="date"><?php echo $run['pretty_date']; ?></span>
+        </div>
+
+        <img class="pic" height="50" width="50" src="<?php echo $run['picture']; ?>" />
+
+        <a class="name" href="/user/<?php echo $run['user_id']; ?>">
+          <?php echo $run['name']; ?>
+        </a>
+        <div style="clear: both;"></div>
+      </div>
+      <?php } ?>
+      <?php }else { ?>
+      <div id="info">
+        You do not have any friends using Run with Friends yet!
+      </div>
+      <?php } ?>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 Config = null;
 
 function facebookInit(config) {
-  Config = config;
+  Config = config;  
 
   FB.init({
     appId: Config.appId,

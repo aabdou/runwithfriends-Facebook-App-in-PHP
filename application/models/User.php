@@ -9,16 +9,28 @@ class Application_Model_User
   private $email;
   private $friends;
   private $dirty;
-  private $facebook;
+  private $facebook;  
 
   public function __construct($facebook)
   {
     $this->facebook = $facebook;
+    $session = $facebook->getSession();
+    $this->access_token = $session['access_token'];
+    $this->user_id = $session['uid'];
   }
   
+  /*
+   * Reload data from the Facebook API.
+   */ 
   public function refreshData()
   {
-    $this->facebook->api();
+    $result = $this->facebook->api('/me', 
+        array('fields' => 'picture,friends', 'access_token' => $this->access_token));
+        
+    $this->name = $result['name'];   
+    $this->email = $result['email'];
+    $this->picture = $result['picture']; 
+    $this->dirty = false;
   }
 }
 
