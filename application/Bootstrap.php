@@ -25,4 +25,12 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
     return $autoloader;
   }
+  
+  /**
+   *  Register custom helpers with the broker.
+   */
+  protected function _initHelpersBroker()
+  {
+   // Zend_Controller_Action_HelperBroker::addPrefix('AA_Controller_Action_Helper_');
+  }
 }

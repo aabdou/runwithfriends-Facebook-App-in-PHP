@@ -11,7 +11,19 @@
   </head>
   <body>
     <div id="doc">
-      <div class="hd">        
+      <div class="hd">    
+        <?php if($this->layout()->user) { ?>
+          <div id="user-info">
+            <div class="info">
+              <a class="name" href="/user/<?php echo $this->layout()->user->getId(); ?>">
+                <?php echo $this->layout()->user->getName(); ?>
+              </a>
+              <a class="logout" href='<?php echo $this->layout()->user->getLogoutUrl(); ?>'>Logout</a>
+            </div>
+            <img width="50" height="50" src="<?php echo $this->layout()->user->getPicture(); ?>">
+          </div>
+        <?php } ?>
+        <a class="logo" href="/">Run with Friends</a>    
       </div>
 
       <div class="bd">

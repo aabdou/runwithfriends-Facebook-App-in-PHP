@@ -21,6 +21,9 @@
       <modelsDirectory>
         <modelFile modelName="User"/>
         <modelFile modelName="Facebook"/>
+        <dbTableDirectory>
+          <dbTableFile dbTableName="Run"/>
+        </dbTableDirectory>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>
       <viewsDirectory>

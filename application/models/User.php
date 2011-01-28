@@ -32,5 +32,26 @@ class Application_Model_User
     $this->picture = $result['picture']; 
     $this->dirty = false;
   }
+  
+
+  public function getId()
+  {
+    return $this->user_id;
+  }
+  
+  public function getName()
+  {
+    return $this->name;
+  }
+  
+  public function getPicture()
+  {
+    return $this->picture;
+  }
+  
+  public function getLogoutUrl()
+  {
+    return $this->facebook->getLogoutUrl(); //array('next' => $next)
+  }
 }
 

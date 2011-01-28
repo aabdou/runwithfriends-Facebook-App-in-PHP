@@ -10,11 +10,11 @@
           <td>Where</td>
         </tr>
       </thead>
-      <tbody id="recent-bd">
+      <tbody id="recent-bd">      
         <?php foreach($this->usrRecentRuns as $run){ ?>
         <tr>
-          <td><?php echo $run['date']; ?></td>
-          <td><?php echo $run['pretty_distance']; ?></td>
+          <td><?php echo $run['date_year']; ?>-<?php echo $run['date_month']; ?>-<?php echo $run['date_day']; ?></td>
+          <td><?php echo $run['distance']; ?></td>
           <td><?php echo $run['location']; ?></td>
         </tr>
         <?php } ?>
