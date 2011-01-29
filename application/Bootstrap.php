@@ -31,6 +31,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
    */
   protected function _initHelpersBroker()
   {
-   // Zend_Controller_Action_HelperBroker::addPrefix('AA_Controller_Action_Helper_');
+    Zend_Controller_Action_HelperBroker::addPrefix('AA_Controller_Action_Helper_');
   }
 }

@@ -53,7 +53,8 @@ class IndexController extends Zend_Controller_Action
     public function preDispatch()
     {           
         if($this->_request->getActionName() != 'welcome' && !$this->user) {
-            $this->_request->setActionName('welcome')->setDispatched(false);
+            $this->_request->setActionName('welcome')
+                           ->setDispatched(false);
         }    
     }         
 
@@ -66,7 +67,10 @@ class IndexController extends Zend_Controller_Action
         $runTable = new Application_Model_DbTable_Run();
         
         //Do we have a form post? filter, validate and insert a run.
-        if($this->_request->isPost() && $this->_request->getPost('no_csrf_fb') && $form->isValid($this->_request->getPost())) {            
+        if($this->_request->isPost() &&
+           $this->_request->getPost('no_csrf_fb') &&
+           $form->isValid($this->_request->getPost())) {   
+                     
             $values = $form->getValues();
             $values['user_id'] = $this->user->getId();
             
@@ -75,12 +79,12 @@ class IndexController extends Zend_Controller_Action
         
         //Get the recent N runs for the current user.
         $this->view->usrRecentRuns = $runTable->getRecentRunsByUser($this->user->getId());
+        $this->view->friends = $this->user->getFriends();
         
         //TODO: Get friends list (id, name and picture).
         
         $this->view->form = $form;
-    }
-    
+    }    
 
     /**
      *  Display a welcome screen and a login button.

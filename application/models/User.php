@@ -24,15 +24,20 @@ class Application_Model_User
    */ 
   public function refreshData()
   {
-    $result = $this->facebook->api('/me', 
-        array('fields' => 'picture,friends', 'access_token' => $this->access_token));
+    $result = $this->facebook->api('/me', array('fields' => 'picture,friends', 
+                                                'access_token' => $this->access_token));
         
     $this->name = $result['name'];   
     $this->email = $result['email'];
     $this->picture = $result['picture']; 
     $this->dirty = false;
+    $this->friends = $result['friends']['data'];
   }
   
+  public function getFriends()
+  {
+    return $this->friends;
+  }  
 
   public function getId()
   {
@@ -54,4 +59,3 @@ class Application_Model_User
     return $this->facebook->getLogoutUrl(); //array('next' => $next)
   }
 }
-
